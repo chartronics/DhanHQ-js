@@ -1,5 +1,5 @@
 {
-  "name": "dhanhq",
+  "name": "dhanhq-chartronics",
   "version": "1.0.6",
   "description": "DhanHQ API Library for node js to trade with DhanHQ API's.",
   "main": "dist/index.js",
@@ -22,6 +22,9 @@
     "trading"
   ],
   "author": "Vinay S",
+  "contributors": [
+    "chartronics <chatronics2024@gmail.com>"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dhan-oss/DhanHQ-js.git"
