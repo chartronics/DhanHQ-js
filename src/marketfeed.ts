@@ -47,6 +47,9 @@ class DhanSDKHelper {
         console.log(`WebSocket closed with status ${closeStatus}: ${closeMsg}`);
         websocket.close();
         this.sdkInstance.ws = null;
+        if (this.sdkInstance.onClose) {
+            await this.sdkInstance.onClose(this.sdkInstance);
+        }
     }
 }
 
@@ -159,7 +162,7 @@ export class DhanFeed {
                     break;
                 case 50:
                     this.processServerDisConnectionPacket(data);
-                    process.exit();
+                    throw new Error("Server Disconnect");
                     break;
                 default:
                     console.warn(`Unknown response code: ${responseCode}`);
