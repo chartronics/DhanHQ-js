@@ -1,6 +1,6 @@
 {
   "name": "dhanhq-chartronics",
-  "version": "1.0.6",
+  "version": "1.0.6.1",
   "description": "DhanHQ API Library for node js to trade with DhanHQ API's.",
   "main": "dist/index.js",
   "module": "dist/index.m.js",

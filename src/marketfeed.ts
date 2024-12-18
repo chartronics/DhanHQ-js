@@ -9,6 +9,7 @@ import {
     QuoteResponse,
     TickerResponse
 } from "./types";
+import { APIError } from './errors';
 
 const WSS_URL = 'wss://api-feed.dhan.co';
 export const IDX = 0;
@@ -161,8 +162,8 @@ export class DhanFeed {
                     response = this.processMarketStatusPacket(data);
                     break;
                 case 50:
-                    this.processServerDisConnectionPacket(data);
-                    throw new Error("Server Disconnect");
+                    var errorcode = this.processServerDisConnectionPacket(data);
+                    throw new APIError(errorcode)
                     break;
                 default:
                     console.warn(`Unknown response code: ${responseCode}`);
@@ -423,7 +424,9 @@ export class DhanFeed {
                 break;
             default:
                 console.log("Disconnected: Unknown reason for disconnection");
+                
         }
         this.close();
+        return errorCode;
     }
 }
